@@ -1,4 +1,4 @@
- module.exports = {
+module.exports = {
   env: {
     commonjs: true,
     es6: true,
@@ -16,5 +16,7 @@
     ecmaVersion: 2018,
   },
   rules: {
+	"linebreak-style": 0,
+	"operator-assignment": [0, "always"],
   },
 };
