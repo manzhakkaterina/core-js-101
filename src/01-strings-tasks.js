@@ -5,7 +5,6 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-
 /**
  * Returns the result of concatenation of two strings.
  *
@@ -21,7 +20,6 @@
 function concatenateStrings(value1, value2) {
   return value1 + value2;
 }
-
 
 /**
  * Returns the length of given string.
@@ -70,7 +68,6 @@ function extractNameFromTemplate(value) {
   const extract = (str, mask) => str.match(new RegExp(mask.replace('*', '(.*)')))[1];
   return extract(value, extr);
 }
-
 
 /**
  * Returns a first char of the given string.
@@ -147,7 +144,6 @@ function unbracketTag(str) {
   return str.substring(1, str.length - 1);
 }
 
-
 /**
  * Converts all characters of the specified string into the upper case
  *
@@ -215,7 +211,6 @@ function getRectangleString(width, height) {
   return str.concat(str1, str2, str3);
 }
 
-
 /**
  * Encode specified string with ROT13 cipher
  * See details:  https://en.wikipedia.org/wiki/ROT13
@@ -253,7 +248,6 @@ function isString(/* value */) {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Returns playid card id.
  *
@@ -282,7 +276,6 @@ function getCardId(/* value */) {
   throw new Error('Not implemented');
 }
 
-
 module.exports = {
   concatenateStrings,
   getStringLength,
@@ -300,4 +293,3 @@ module.exports = {
   isString,
   getCardId,
 };
-
