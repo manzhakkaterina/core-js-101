@@ -1,296 +1,246 @@
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String   *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates           *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number   *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math     *
  *                                                                                           *
  ******************************************************************************************* */
 
 /**
- * Returns the result of concatenation of two strings.
- *
- * @param {string} value1
- * @param {string} value2
- * @return {string}
- *
- * @example
- *   'aa', 'bb' => 'aabb'
- *   'aa',''    => 'aa'
- *   '',  'bb'  => 'bb'
- */
-function concatenateStrings(value1, value2) {
-  return value1 + value2;
-}
-
-/**
- * Returns the length of given string.
- *
- * @param {string} value
- * @return {number}
- *
- * @example
- *   'aaaaa' => 5
- *   'b'     => 1
- *   ''      => 0
- */
-function getStringLength(value) {
-  return value.length;
-}
-
-/**
- * Returns the result of string template and given parameters firstName and lastName.
- * Please do not use concatenation, use template string :
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
- *
- * @param {string} firstName
- * @param {string} lastName
- * @return {string}
- *
- * @example
- *   'John','Doe'      => 'Hello, John Doe!'
- *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
- */
-function getStringFromTemplate(firstName, lastName) {
-  return `Hello, ${firstName} ${lastName}!`;
-}
-
-/**
- * Extracts a name from template string 'Hello, First_Name Last_Name!'.
- *
- * @param {string} value
- * @return {string}
- *
- * @example
- *   'Hello, John Doe!' => 'John Doe'
- *   'Hello, Chuck Norris!' => 'Chuck Norris'
- */
-function extractNameFromTemplate(value) {
-  const extr = 'Hello, * *!';
-  const extract = (str, mask) => str.match(new RegExp(mask.replace('*', '(.*)')))[1];
-  return extract(value, extr);
-}
-
-/**
- * Returns a first char of the given string.
- *
- * @param {string} value
- * @return {string}
- *
- * @example
- *   'John Doe'  => 'J'
- *   'cat'       => 'c'
- */
-function getFirstChar(value) {
-  return value[0];
-}
-
-/**
- * Removes a leading and trailing whitespace characters from string.
- *
- * @param {string} value
- * @return {string}
- *
- * @example
- *   '  Abracadabra'    => 'Abracadabra'
- *   'cat'              => 'cat'
- *   '\tHello, World! ' => 'Hello, World!'
- */
-function removeLeadingAndTrailingWhitespaces(value) {
-  return value.trim();
-}
-
-/**
- * Returns a string that repeated the specified number of times.
- *
- * @param {string} value
- * @param {string} count
- * @return {string}
- *
- * @example
- *   'A', 5  => 'AAAAA'
- *   'cat', 3 => 'catcatcat'
- */
-function repeatString(value, count) {
-  return value.repeat(count);
-}
-
-/**
- * Remove the first occurrence of string inside another string
- *
- * @param {string} str
- * @param {string} value
- * @return {string}
- *
- * @example
- *   'To be or not to be', 'not'  => 'To be or  to be'
- *   'I like legends', 'end' => 'I like legs',
- *   'ABABAB','BA' => 'ABAB'
- */
-function removeFirstOccurrences(str, value) {
-  return str.replace(value, '');
-}
-
-/**
- * Remove the first and last angle brackets from tag string
- *
- * @param {string} str
- * @return {string}
- *
- * @example
- *   '<div>' => 'div'
- *   '<span>' => 'span'
- *   '<a>' => 'a'
- */
-function unbracketTag(str) {
-  return str.substring(1, str.length - 1);
-}
-
-/**
- * Converts all characters of the specified string into the upper case
- *
- * @param {string} str
- * @return {string}
- *
- * @example
- *   'Thunderstruck' => 'THUNDERSTRUCK'
- *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
- */
-function convertToUpperCase(str) {
-  return str.toUpperCase();
-}
-
-/**
- * Extracts e-mails from single string with e-mails list delimeted by semicolons
- *
- * @param {string} str
- * @return {array}
- *
- * @example
- *   'angus.young@gmail.com;brian.johnson@hotmail.com;bon.scott@yahoo.com'
- *   => [
- *      'angus.young@gmail.com',
- *      'brian.johnson@hotmail.com',
- *      'bon.scott@yahoo.com'
- *   ],
- *   'info@gmail.com' => ['info@gmail.com']
- */
-function extractEmails(str) {
-  return str.split(';');
-}
-
-/**
- * Returns the string representation of rectangle with specified width and height
- * using pseudograhic chars
+ * Returns an area of a rectangle given by width and height.
  *
  * @param {number} width
  * @param {number} height
- * @return {string}
+ * @return {number}
  *
- * @example
- *
- *            '┌────┐\n'+
- *  (6,4) =>  '│    │\n'+
- *            '│    │\n'+
- *            '└────┘\n'
- *
- *  (2,2) =>  '┌┐\n'+
- *            '└┘\n'
- *
- *             '┌──────────┐\n'+
- *  (12,3) =>  '│          │\n'+
- *             '└──────────┘\n'
- *
+ * @example:
+ *   5, 10 => 50
+ *   5, 5  => 25
  */
-function getRectangleString(width, height) {
-  const str = '';
-  let str1 = '';
-  let str2 = '';
-  let str3 = '';
-  str1 = str1.concat('┌', '─'.repeat(width - 2), '┐', '\n');
-  str2 = str2.concat('│', ' '.repeat(width - 2), '│', '\n').repeat(height - 2);
-  str3 = str3.concat('└', '─'.repeat(width - 2), '┘', '\n');
-  return str.concat(str1, str2, str3);
+function getRectangleArea(width, height) {
+  return width * height;
 }
 
 /**
- * Encode specified string with ROT13 cipher
- * See details:  https://en.wikipedia.org/wiki/ROT13
+ * Returns a circumference of circle given by radius.
  *
- * @param {string} str
- * @return {string}
+ * @param {number} radius
+ * @return {number}
  *
- * @example
- *
- *   'hello' => 'uryyb'
- *   'Why did the chicken cross the road?' => 'Jul qvq gur puvpxra pebff gur ebnq?'
- *   'Gb trg gb gur bgure fvqr!' => 'To get to the other side!'
- *   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
- *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
- *
+ * @example:
+ *   5    => 31.41592653589793
+ *   3.14 => 19.729201864543903
+ *   0    => 0
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function getCircleCircumference(radius) {
+  return 2 * Math.PI * radius;
 }
 
 /**
- * Returns true if the value is string; otherwise false.
- * @param {string} value
- * @return {boolean}
+ * Returns an average of two given numbers.
  *
- * @example
- *   isString() => false
- *   isString(null) => false
- *   isString([]) => false
- *   isString({}) => false
- *   isString('test') => true
- *   isString(new String('test')) => true
+ * @param {number} value1
+ * @param {number} value2
+ * @return {number}
+ *
+ * @example:
+ *   5, 5  => 5
+ *  10, 0  => 5
+ *  -3, 3  => 0
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  return (value1 / 2) + (value2 / 2);
 }
 
 /**
- * Returns playid card id.
+ * Returns a distance between two points by cartesian coordinates.
  *
- * Playing cards inittial deck inclides the cards in the following order:
+ * @param {number} x1
+ * @param {number} y1
+ * @param {number} x2
+ * @param {number} y2
  *
- *  'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
- *  'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
- *  'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
- *  'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'
+ * @return {number}
  *
- * (see https://en.wikipedia.org/wiki/Standard_52-card_deck)
- * Function returns the zero-based index of specified card in the initial deck above.
+ * @example:
+ *   (0,0) (0,1)    => 1
+ *   (0,0) (1,0)    => 1
+ *   (-5,0) (10,-10) => 18.027756377319946
+ */
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+}
+
+/**
+ * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
+ *
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ *
+ * @example:
+ *   5*x - 10 = 0    => 2
+ *   x + 8 = 0       => -8
+ *   5*x = 0         => 0
+ */
+function getLinearEquationRoot(a, b) {
+  return (-b / a);
+}
+
+/**
+ * Returns an angle (in radians) between two vectors given by xi and yi,
+ * coordinates in Cartesian plane.
+ * See details https://en.wikipedia.org/wiki/Euclidean_vector#Representations
+ *
+ * @param {number} x1
+ * @param {number} y1
+ * @param {number} x2
+ * @param {number} y2
+ * @return {number}
+ *
+ * @example:
+ *   (1,0) (0,1)     => π/2
+ *   (0,1) (0,-1)    => π
+ *   (0,-1) (1,0)    => π/2
+ *   (0,1) (0,1)     => 0
+ *   (0,1) (1,2)     => 0
+ */
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const prom1 = Math.sqrt(x1 * x1 + y1 * y1);
+  const prom2 = Math.sqrt(x2 * x2 + y2 * y2);
+  return Math.acos((x1 * x2 + y1 * y2) / (prom1 * prom2));
+}
+
+/**
+ * Returns a last digit of a integer number.
+ *
+ * @param {number} value
+ * @return {number}
+ *
+ * @example:
+ *   100     => 0
+ *    37     => 7
+ *     5     => 5
+ *     0     => 0
+ */
+function getLastDigit(value) {
+  const str = value.toString();
+  return str[str.length - 1];
+}
+
+/**
+ * Returns a number by given string representation.
  *
  * @param {string} value
  * @return {number}
  *
- * @example
- *   'A♣' => 0
- *   '2♣' => 1
- *   '3♣' => 2
- *     ...
- *   'Q♠' => 50
- *   'K♠' => 51
+ * @example:
+ *    '100'     => 100
+ *     '37'     => 37
+ * '-525.5'     => -525.5
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function parseNumberFromString(value) {
+  return Number(value);
+}
+
+/**
+ * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
+ *
+ * @param {number} a
+ * @param {number} b
+ * @param {number} c
+ * @return {number}
+ *
+ * @example:
+ *   1,1,1   => 1.7320508075688772
+ *   3,3,3   => 5.196152422706632
+ *   1,2,3   => 3.741657386773941
+ */
+function getParallelepipedDiagonal(a, b, c) {
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
+}
+
+/**
+ * Returns the number rounded to specified power of 10.
+ *
+ * @param {number} num
+ * @param {number} pow
+ * @return {number}
+ *
+ * @example:
+ *   1234, 0  => 1234
+ *   1234, 1  => 1230
+ *   1234, 2  => 1200
+ *   1234, 3  => 1000
+ *   1678, 0  => 1678
+ *   1678, 1  => 1680
+ *   1678, 2  => 1700
+ *   1678, 3  => 2000
+ */
+function roundToPowerOfTen(num, pow) {
+  return Math.round(num / (10 ** pow)) * (10 ** pow);
+}
+
+/**
+ * Returns true is the number is prime; otherwise false.
+ * See: https://en.wikipedia.org/wiki/Primality_test
+ *
+ * @param {number} n
+ * @return {bool}
+ *
+ * @example:
+ *   4 => false
+ *   5 => true
+ *   6 => false
+ *   7 => true
+ *   11 => true
+ *   12 => false
+ *   16 => false
+ *   17 => true
+ */
+function isPrime(n) {
+  if (n === 2 || n === 3) return true;
+  if (n <= 1 || n % 2 === 0 || n % 3 === 0) return false;
+  for (let i = 5; i * i <= n; i = i + 6) {
+    if (n % i === 0 || n % (i + 2) === 0) return false;
+  }
+  return true;
+}
+
+/**
+ * Tries to convert value to number and returns it if conversion was successful;
+ * otherwise returns default value passed as a second argument.
+ *
+ * @param {any} value
+ * @param {any} def
+ * @return {number}
+ *
+ * @example
+ *   toNumber(null, 0) => 0
+ *   toNumber('test', 0) => 0
+ *   toNumber('1', 0) => 1
+ *   toNumber(42, 0) => 42
+ *   toNumber(new Number(42), 0) => 42
+ */
+function toNumber(value, def) {
+  if (Number.isNaN(+value)) {
+    return def;
+  }
+  return Number(value);
 }
 
 module.exports = {
-  concatenateStrings,
-  getStringLength,
-  getStringFromTemplate,
-  extractNameFromTemplate,
-  getFirstChar,
-  removeLeadingAndTrailingWhitespaces,
-  repeatString,
-  removeFirstOccurrences,
-  unbracketTag,
-  convertToUpperCase,
-  extractEmails,
-  getRectangleString,
-  encodeToRot13,
-  isString,
-  getCardId,
+  getRectangleArea,
+  getCircleCircumference,
+  getAverage,
+  getDistanceBetweenPoints,
+  getLinearEquationRoot,
+  getAngleBetweenVectors,
+  getLastDigit,
+  parseNumberFromString,
+  getParallelepipedDiagonal,
+  roundToPowerOfTen,
+  isPrime,
+  toNumber,
 };
-
