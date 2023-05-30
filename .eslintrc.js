@@ -20,3 +20,4 @@ module.exports = {
     "operator-assignment": [0, "always"],
   },
 };
+
