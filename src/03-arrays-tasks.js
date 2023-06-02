@@ -118,7 +118,7 @@ function removeFalsyValues(arr) {
  *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
  */
 function getUpperCaseStrings(arr) {
-  return arr.filter((n) => n.toUpperCase());
+  return arr.map((n) => n.toUpperCase());
 }
 
 
@@ -133,7 +133,7 @@ function getUpperCaseStrings(arr) {
  *    [ 'angular', 'react', 'ember' ] => [ 7, 5, 5 ]
  */
 function getStringsLength(arr) {
-  return arr.filter((n) => n.length);
+  return arr.map((n) => n.length);
 }
 
 /**
